@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaBrain, FaBone, FaTools, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaBrain, FaBone, FaTools, FaExternalLinkAlt, FaCamera } from 'react-icons/fa';
 import { publicationsData } from '../data';
 
 const iconMap = {
@@ -25,11 +25,11 @@ const PublicationsPremium = () => {
   return (
     <section ref={sectionRef} id="publications" className="py-8 sm:py-12 lg:py-16 relative overflow-hidden">
       {/* Background gradient effects */}
-      <motion.div 
+      <motion.div
         style={{ y }}
         className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-primary/8 to-transparent rounded-full blur-[60px] pointer-events-none"
       />
-      <motion.div 
+      <motion.div
         style={{ y: useTransform(scrollYProgress, [0, 1], [-50, 50]) }}
         className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-secondary/8 to-transparent rounded-full blur-[60px] pointer-events-none"
       />
@@ -45,7 +45,7 @@ const PublicationsPremium = () => {
           >
             Research & Innovation
           </motion.span>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -81,7 +81,7 @@ const PublicationsPremium = () => {
               >
                 {/* Animated background effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 {/* Decorative corner element */}
                 <div className="absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute top-4 right-4 w-12 h-0.5 bg-gradient-to-r from-primary to-transparent" />
@@ -103,7 +103,7 @@ const PublicationsPremium = () => {
                   <h3 className="text-2xl font-bold mb-4 leading-tight group-hover:text-primary transition-colors duration-300">
                     {pub.title}
                   </h3>
-                  
+
                   <p className="text-text-secondary leading-relaxed mb-6 text-base">
                     {pub.description}
                   </p>
