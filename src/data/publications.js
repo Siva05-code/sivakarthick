@@ -30,5 +30,13 @@ export const publicationsData = [
     doi: "10.4018/979-8-3373-4272-6.ch010",
     link: "https://www.igi-global.com/gateway/chapter/394523",
     icon: "brain"
+  },
+  {
+    id : 5,
+    title: "Automated Attendance System using Deep Learning-Based Face Recognition with InsightFace Model",
+    description: "The paper was presented at Engineering Advances 2025: Second International Conference, held at Pravara Rural Engineering College, Maharashtra in December 2025. The project focuses on a contactless, automated attendance system using deep learning face recognition. It utilizes the InsightFace model for high accuracy and robustness under real-world conditions. The work highlights practical applications of AI-driven automation in academic environments.",
+    // doi : " ",
+    // link: " " ,
+    icon : "cam"
   }
 ];
