@@ -8,6 +8,7 @@ const iconMap = {
   brain: FaBrain,
   bone: FaBone,
   a: FaTools,
+  cam: FaCamera,
 };
 
 const PublicationsPremium = () => {
