@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaTimes, FaCheckCircle, FaGithub, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
@@ -43,21 +43,21 @@ const ProjectCard = ({ project, index, onClick }) => {
     >
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
+
       {/* Animated mesh pattern on hover */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '0.5s' }} />
       </div>
-      
+
       {/* Project number removed to improve readability */}
 
       {/* Icon/Visual area */}
       <div className="relative h-48 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card-bg/50" />
-        <motion.span 
+        <motion.span
           className="text-8xl"
-          animate={{ 
+          animate={{
             scale: isHovered ? 1.2 : 1,
             rotate: isHovered ? 5 : 0,
           }}
@@ -113,7 +113,7 @@ const ProjectsPremium = () => {
   const sectionRef = useRef(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [selectedProject, setSelectedProject] = useState(null); // { project, rect }
-  const [filter, setFilter] = useState('all');
+  const [filter] = useState('all');
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -123,10 +123,10 @@ const ProjectsPremium = () => {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   // Get unique tags for filter
-  const allTags = ['all', ...new Set(projectsData.flatMap(p => p.tags.slice(0, 2)))].slice(0, 6);
+  // const allTags = ['all', ...new Set(projectsData.flatMap(p => p.tags.slice(0, 2)))].slice(0, 6);
 
-  const filteredProjects = filter === 'all' 
-    ? projectsData 
+  const filteredProjects = filter === 'all'
+    ? projectsData
     : projectsData.filter(p => p.tags.includes(filter));
 
   // Prevent background scrolling when modal is open
@@ -148,7 +148,7 @@ const ProjectsPremium = () => {
   return (
     <section ref={sectionRef} id="projects" className="py-8 sm:py-12 lg:py-16 relative overflow-hidden">
       {/* Background elements */}
-      <motion.div 
+      <motion.div
         style={{ y }}
         className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-[150px] pointer-events-none"
       />
@@ -164,7 +164,7 @@ const ProjectsPremium = () => {
           >
             Featured Work
           </motion.span>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -212,7 +212,7 @@ const ProjectsPremium = () => {
             <motion.div
               initial={(() => {
                 const r = selectedProject.rect || {};
-                return r.top != null ? { 
+                return r.top != null ? {
                   position: 'fixed',
                   top: r.top,
                   left: r.left,
@@ -235,7 +235,7 @@ const ProjectsPremium = () => {
               }}
               exit={(() => {
                 const r = selectedProject.rect || {};
-                return r.top != null ? { 
+                return r.top != null ? {
                   top: r.top,
                   left: r.left,
                   width: r.width,

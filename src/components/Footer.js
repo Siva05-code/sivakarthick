@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { FaLinkedin, FaGithub, FaCode, FaArrowUp, FaHeart } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaCode, FaArrowUp } from 'react-icons/fa';
 import { FiMail, FiArrowUpRight } from 'react-icons/fi';
 import { contactData } from '../data';
 
@@ -34,13 +34,13 @@ const FooterPremium = () => {
   return (
     <footer ref={footerRef} className="relative bg-darker-bg border-t border-white/5 overflow-hidden">
       {/* Large CTA Section */}
-      <motion.div 
+      <motion.div
         style={{ y, opacity }}
         className="py-16 sm:py-20 md:py-24 lg:py-32 relative"
       >
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ const FooterPremium = () => {
           >
             Is your big idea ready?
           </motion.p>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ const FooterPremium = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <a 
+            <a
               href={`mailto:${contactData.email}`}
               className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white text-dark-bg rounded-full font-semibold text-base sm:text-lg hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-[0_0_40px_rgba(99,102,241,0.4)]"
             >
@@ -140,7 +140,7 @@ const FooterPremium = () => {
               <h3 className="text-sm uppercase tracking-wider text-text-muted mb-6">Contact</h3>
               <ul className="space-y-3">
                 <li>
-                  <a 
+                  <a
                     href={`mailto:${contactData.email}`}
                     className="text-text-secondary hover:text-primary transition-colors duration-300"
                   >
@@ -159,10 +159,10 @@ const FooterPremium = () => {
       {/* Bottom Bar */}
       <div className="border-t border-white/5 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-text-muted">
+          <p className="text-sm text-text-muted">
             © {currentYear} SIVAKARTHICK B. All rights reserved.
           </p>
-          
+
 
           {/* Scroll to top */}
           <Link
