@@ -2,6 +2,10 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaEye, FaDownload, FaFilePdf } from 'react-icons/fa';
 
+// Google Drive File ID for the resume
+// easier to update if needed, though 'Manage versions' in Drive is preferred
+const RESUME_FILE_ID = '1B4bl2Fkaz9eaKHYLt2PMSfmyGxJ8SSmy';
+
 const ResumeModalPremium = ({ isOpen, onClose }) => {
   const [showPreview, setShowPreview] = React.useState(false);
 
@@ -23,12 +27,8 @@ const ResumeModalPremium = ({ isOpen, onClose }) => {
   };
 
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'SIVAKARTHICK_B_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open Google Drive download link in new tab
+    window.open(`https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`, '_blank');
   };
 
   return (
@@ -128,20 +128,19 @@ const ResumeModalPremium = ({ isOpen, onClose }) => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 }}
-                  className="bg-darker-bg rounded-xl overflow-hidden border border-white/10 shadow-inner"
+                  className="bg-darker-bg rounded-xl border border-white/10 shadow-inner mx-auto"
+                  // style={{ aspectRatio: '0.75/1' }}
+                  style={{ height: '80vh', aspectRatio: '1.414/1.414' }}
                 >
                   <iframe
-                    src="/resume.pdf"
-                    className="w-full h-[70vh] min-h-[500px]"
+                    src={`https://drive.google.com/file/d/${RESUME_FILE_ID}/preview`}
+                    className="w-full h-full border-none"
                     title="Resume Preview"
                   />
                 </motion.div>
 
-                <div className="flex items-center justify-between mt-6 pt-5 border-t border-white/10">
-                  <p className="text-text-secondary text-sm">
-                    Protected view • Downloads disabled in preview
-                  </p>
-                  <motion.button
+                {/* <div className="flex items-center justify-between mt-6 pt-5 border-t border-white/10"> */}
+                {/* <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleDownload}
@@ -149,8 +148,8 @@ const ResumeModalPremium = ({ isOpen, onClose }) => {
                   >
                     <FaDownload />
                     Download
-                  </motion.button>
-                </div>
+                  </motion.button> */}
+                {/* </div> */}
               </div>
             )}
           </motion.div>
