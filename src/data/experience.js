@@ -22,7 +22,7 @@ export const experienceData = [
     company: "Hyperready Technology",
     location: "Coimbatore, India",
     startDate: "October 2025",
-    endDate: "Present",
+    endDate: "February 2026",
     type: "Internship",
     description: "Working on real-time projects and gaining hands-on experience in software development.",
     responsibilities: [
