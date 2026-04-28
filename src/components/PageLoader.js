@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const PageLoader = ({ onLoadComplete }) => {
+const PageLoader = ({ onLoadComplete, minDuration = 350 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setIsLoading(false);
-            onLoadComplete?.();
-          }, 500);
-          return 100;
-        }
-        return prev + Math.random() * 10;
-      });
-    }, 100);
+    const start = performance.now();
+    let rafId;
 
-    return () => clearInterval(interval);
-  }, [onLoadComplete]);
+    const tick = (now) => {
+      const elapsed = now - start;
+      const nextProgress = Math.min(100, (elapsed / minDuration) * 100);
+      setProgress(nextProgress);
+
+      if (nextProgress >= 100) {
+        setIsLoading(false);
+        onLoadComplete?.();
+        return;
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [minDuration, onLoadComplete]);
 
   return (
     <AnimatePresence>

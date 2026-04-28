@@ -74,10 +74,6 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6"
           >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-text-secondary">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Open to collaborations
-            </span>
           </motion.div>
 
           {/* Main Title */}
